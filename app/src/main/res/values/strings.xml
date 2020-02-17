@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GameAppVer0</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="abhi_add_nhi_hoga">abhi add nhi hoga</string>
+    <string name="enter_details">Enter Details</string>
+    <string name="time">Time</string>
+    <string name="title">Title</string>
+    <string name="add">add</string>
+    <string name="date">Date</string>
+    <string name="reward_coins">Reward coins</string>
+    <string name="description">Description</string>
+</resources>

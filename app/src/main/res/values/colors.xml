@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4EA9F7</color>
+    <color name="colorPrimaryDark">#2C55EB</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="stan_red"> #D2C50909</color>
+    <color name="stan_green">#00C853 </color>
+</resources>
