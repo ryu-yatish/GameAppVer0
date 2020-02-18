@@ -1,6 +1,8 @@
 package com.example.gameappver0;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,6 +24,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private FloatingActionButton add_quest,add_penalty;
+    private ImageButton bn_character;
+    private TextView username;
+    public static final String SHARED_PREFS="sharedPrefs";
+    public static final String USER = "user";
+    private String username_load;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -36,8 +45,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         add_quest.setOnClickListener((View.OnClickListener)this);
         add_penalty = view.findViewById(R.id.add_penalty);
         add_penalty.setOnClickListener((View.OnClickListener)this);
-
-
+        bn_character = view.findViewById(R.id.bn_character);
+        bn_character.setOnClickListener((View.OnClickListener)this);
+        username = view.findViewById(R.id.txt_username);
+        final Context context = this.getContext();
+        updateData(context);
 
 
 
@@ -56,6 +68,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 Fragment penaltyFragment = new addPenaltyFragment();
                 MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container,penaltyFragment,null).addToBackStack(null).commit();
                 break;
+
+            case R.id.bn_character:
+                Fragment fragment = new CharaterFragment();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment,null).addToBackStack(null).commit();
+                break;
         }
+    }
+    public void loadData(Context context)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+        username_load = sharedPreferences.getString(USER, "Guest");
+    }
+    public void updateData(Context context)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+        loadData(context);
+        username.setText(username_load);
     }
 }
