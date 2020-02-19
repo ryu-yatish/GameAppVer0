@@ -41,6 +41,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         add_quest = view.findViewById(R.id.add_quest);
         add_quest.setOnClickListener((View.OnClickListener)this);
         add_penalty = view.findViewById(R.id.add_penalty);
