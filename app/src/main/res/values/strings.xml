@@ -11,4 +11,6 @@
     <string name="date">Date</string>
     <string name="reward_coins">Reward coins</string>
     <string name="description">Description</string>
+    <string name="guest">Guest</string>
+    <string name="save">SAVE</string>
 </resources>
