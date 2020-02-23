@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity  {
 
             Fragment PrehomeFragment = new PreHomeFragment();
 
-            fragmentManager.beginTransaction().add(R.id.fragment_container, PrehomeFragment, null).addToBackStack(null).commit();
+            fragmentManager.beginTransaction().add(R.id.fragment_container, PrehomeFragment, null).commit();
         }
 
 

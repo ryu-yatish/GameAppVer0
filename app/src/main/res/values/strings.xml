@@ -13,4 +13,15 @@
     <string name="description">Description</string>
     <string name="guest">Guest</string>
     <string name="save">SAVE</string>
+
+    <string-array name="list1">
+        <item>yatish #1</item>
+        <item>yatish #2</item>
+        <item>yatish #3</item>
+        <item>yatish #4</item>
+        <item>yatish #5</item>
+        <item>yatish #6</item>
+        <item>yatish #7</item>
+        <item>yatish #8</item>
+    </string-array>
 </resources>

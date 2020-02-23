@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String USER = "user";
     private String username_load;
+    String s1[];
+
+    RecyclerView recyclerView_quest,recyclerView_penalty;
+
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -42,6 +49,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        recyclerView_quest = view.findViewById(R.id.recyclerView_quest);
+        //recyclerView_penalty = view.findViewById(R.id.recyclerView_penalty);
+
         add_quest = view.findViewById(R.id.add_quest);
         add_quest.setOnClickListener((View.OnClickListener)this);
         add_penalty = view.findViewById(R.id.add_penalty);
@@ -52,6 +62,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         final Context context = this.getContext();
         updateData(context);
 
+        s1=getResources().getStringArray(R.array.list1);
+
+
+        rec_viewAdapter adapter = new rec_viewAdapter(context,s1);
+        recyclerView_quest.setAdapter(adapter);
+        recyclerView_quest.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
 
         return view;
