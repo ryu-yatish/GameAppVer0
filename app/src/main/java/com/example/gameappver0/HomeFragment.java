@@ -3,6 +3,7 @@ package com.example.gameappver0;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends Fragment implements View.OnClickListener, rec_viewAdapter.OnNoteListener {
 
     private FloatingActionButton add_quest,add_penalty;
     private ImageButton bn_character;
@@ -65,7 +67,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         s1=getResources().getStringArray(R.array.list1);
 
 
-        rec_viewAdapter adapter = new rec_viewAdapter(context,s1);
+        rec_viewAdapter adapter = new rec_viewAdapter(context,s1,this);
         recyclerView_quest.setAdapter(adapter);
         recyclerView_quest.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
@@ -102,5 +104,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         loadData(context);
         username.setText(username_load);
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        Log.d(null,"onNoteListener clicked");
+        Fragment questDetailsFragment = new QuestDetailsFragment();
+        Bundle args = new Bundle();
+
+        args.putInt("position",position);
+        questDetailsFragment.setArguments(args);
+
+        MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container,questDetailsFragment,null).addToBackStack(null).commit();
+
     }
 }

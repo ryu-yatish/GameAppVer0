@@ -13,10 +13,12 @@ public class rec_viewAdapter extends RecyclerView.Adapter<rec_viewAdapter.MyView
 
     String[] Titles;
     Context context;
+    private OnNoteListener mOnNoteListener;
 
-    public rec_viewAdapter(Context ct,String[] titles){
+    public rec_viewAdapter(Context ct,String[] titles, OnNoteListener onNoteListener){
         Titles = titles;
         context = ct;
+        mOnNoteListener = onNoteListener;
     }
     @NonNull
     @Override
@@ -25,7 +27,7 @@ public class rec_viewAdapter extends RecyclerView.Adapter<rec_viewAdapter.MyView
         View view = inflater.inflate(R.layout.rec_row_quest,parent,false);
 
 
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, mOnNoteListener);
     }
 
     @Override
@@ -38,13 +40,24 @@ public class rec_viewAdapter extends RecyclerView.Adapter<rec_viewAdapter.MyView
         return Titles.length;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title;
-
-        public MyViewHolder(@NonNull View itemView) {
+        OnNoteListener onNoteListener;
+        public MyViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             title = itemView.findViewById(R.id.txt_title_rec);
+            this.onNoteListener = onNoteListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
     }
 }

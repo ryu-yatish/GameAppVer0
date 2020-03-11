@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements rec_viewAdapter.OnNoteListener {
     public static FragmentManager fragmentManager ;
     public static int BScoin;
 
@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
+    @Override
+    public void onNoteClick(int position) {
 
-
-
-
-
+    }
 }
