@@ -7,7 +7,7 @@
     tools:context=".addQuestFragment">
 
     <EditText
-        android:id="@+id/txt_title"
+        android:id="@+id/txt_penalty_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -23,22 +23,22 @@
 
 
     <EditText
-        android:id="@+id/txt_coins"
+        android:id="@+id/txt_penalty_coins"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="@string/reward_coins"
+        android:hint="Penalty coins"
         android:importantForAutofill="no"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_penalty_title" />
 
     <EditText
-        android:id="@+id/txt_description"
+        android:id="@+id/txt_penalty_description"
         android:layout_width="0dp"
         android:layout_height="105dp"
         android:layout_marginStart="32dp"
@@ -51,10 +51,10 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_coins" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_penalty_coins" />
 
     <Button
-        android:id="@+id/bn_add"
+        android:id="@+id/bn_penalty_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -63,7 +63,7 @@
         android:text="@string/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_description" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_penalty_description" />
 
     <TextView
         android:id="@+id/textView2"

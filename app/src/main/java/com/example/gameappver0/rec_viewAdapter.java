@@ -9,14 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gameappver0.data.Quest;
+
+import java.util.List;
+
 public class rec_viewAdapter extends RecyclerView.Adapter<rec_viewAdapter.MyViewHolder> {
 
-    String[] Titles;
+    List<Quest> Quests;
     Context context;
     private OnNoteListener mOnNoteListener;
 
-    public rec_viewAdapter(Context ct,String[] titles, OnNoteListener onNoteListener){
-        Titles = titles;
+    public rec_viewAdapter(Context ct, List<Quest> quests, OnNoteListener onNoteListener){
+        Quests=quests;
         context = ct;
         mOnNoteListener = onNoteListener;
     }
@@ -32,21 +36,23 @@ public class rec_viewAdapter extends RecyclerView.Adapter<rec_viewAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.title.setText(Titles[position]);
+        holder.title.setText(Quests.get(position).title);
+        holder.time.setText(Quests.get(position).time);
     }
 
     @Override
     public int getItemCount() {
-        return Titles.length;
+        return Quests.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView title;
+        TextView title,time;
         OnNoteListener onNoteListener;
         public MyViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             title = itemView.findViewById(R.id.txt_title_rec);
+            time = itemView.findViewById(R.id.txt_time_rec);
             this.onNoteListener = onNoteListener;
             itemView.setOnClickListener(this);
         }
